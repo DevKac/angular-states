@@ -1,0 +1,19 @@
+.error-container { 
+  background-color: #FF4136;
+  color: #dddddd;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+}
+
+.error-container h1 {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: normal;
+}
+
+.error-container p {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: normal;
+  text-align: justify;
+}

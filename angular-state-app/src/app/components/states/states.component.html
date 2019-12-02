@@ -1,0 +1,24 @@
+<ng-container [ngSwitch]="state">
+  <ng-container *ngSwitchCase="DataState.Loading">
+    <ng-container [ngSwitch]="loader">
+      <app-loader-spinner *ngSwitchCase="Loaders.Spinner"></app-loader-spinner>
+      <app-loader-dots *ngSwitchCase="Loaders.Dots"></app-loader-dots>
+      <ng-content *ngSwitchCase="Loaders.Custom" select="[custom-loader]"></ng-content>
+      <div *ngSwitchDefault>Loading...</div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="DataState.Success">
+    <ng-content></ng-content>
+  </ng-container>
+  <ng-container *ngSwitchCase="DataState.Failure">
+    <ng-container [ngSwitch]="errorMessage">
+      <app-error-message *ngSwitchCase="ErrorMessages.Message"
+        [header]="'Ops, something went wrong :('"
+        [body]="'Data could not be loaded, please refresh the page. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae nibh erat. Aenean pellentesque pretium facilisis. Sed posuere velit in porttitor sollicitudin. Mauris pellentesque vestibulum varius. Nulla non euismod ipsum. Phasellus auctor ultrices metus eget porttitor. Duis sed metus at ex mollis rutrum a id dolor. Integer eu leo volutpat, posuere elit sed, aliquet purus. Nulla molestie ex nec odio scelerisque tempus. Quisque tellus dui, congue eget elementum eget, malesuada at turpis. Duis elit nibh, iaculis eget felis accumsan, tempor vehicula enim. Vestibulum nisi nisi, viverra a libero non, consequat pulvinar enim. Donec imperdiet, dui ut sagittis venenatis, metus nisl volutpat nisi, eu viverra nulla ante et lacus. Suspendisse potenti.'"
+      ></app-error-message>
+      <ng-content *ngSwitchCase="ErrorMessages.Custom" select="[custom-error]"></ng-content>
+      <div *ngSwitchDefault>Failure!!!</div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchDefault>Dafuq</ng-container>
+</ng-container>

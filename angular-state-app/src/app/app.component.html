@@ -1,0 +1,50 @@
+<div class="app-container">
+  <h1>Loading</h1>
+  <div class="app-component">
+    <app-states [observableData$]="customers$">
+      <div *ngIf="customers$ | async as customers">
+        {{ customers.length }}
+      </div>
+    </app-states>
+  </div>
+
+  <div class="app-component">
+    <app-states [observableData$]="customers$" [loader]="Loaders.Dots">
+      <div *ngIf="customers$ | async as customers">
+        {{ customers.length }}
+      </div>
+    </app-states>
+  </div>
+
+  <div class="app-component">
+    <app-states [observableData$]="customers$" [loader]="Loaders.Custom">
+      <div class="loading-screen" custom-loader>
+        <img src="assets/img/loading-screen-featured-image.jpg" alt="Loading...">
+      </div>
+      <div *ngIf="customers$ | async as customers">
+        {{ customers.length }}
+      </div>
+    </app-states>
+  </div>
+    
+  <h1>Errors</h1>
+  <div class="app-component">
+    <app-states [observableData$]="employees$">
+      <div *ngIf="employees$ | async as employees">
+        {{ employees.length }}
+      </div>
+    </app-states>
+  </div>
+
+  <div class="app-component">
+    <app-states [observableData$]="employees$" [errorMessage]="ErrorMessages.Custom">
+      <div class="error-screen" custom-error>
+          <img src="assets/img/Bsodwindows10.png" alt="Error!!!">
+        </div>
+      <div *ngIf="employees$ | async as employees">
+        {{ employees.length }}
+      </div>
+    </app-states>
+  </div>
+</div>
+
